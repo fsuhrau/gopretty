@@ -71,7 +71,7 @@ func (parser *ErrorParser) Match(line string, reader *bufio.Reader) bool {
 
 	if match := parser.compileErrorMatcher.FindStringSubmatch(line); len(match) > 0 {
 
-		parser.redColor.Printf("1%s%s\n", emoji.Sprint(":x: "), match[0])
+		parser.redColor.Printf("%s%s\n", emoji.Sprint(":x: "), match[0])
 
 		// read 2 additonal lines
 		for i := 0; i < 2; i++ {
@@ -88,51 +88,51 @@ func (parser *ErrorParser) Match(line string, reader *bufio.Reader) bool {
 	}
 
 	if match := parser.clangErrorMatcher.FindStringSubmatch(line); len(match) > 0 {
-		parser.redColor.Printf("2%s%s\n", emoji.Sprint(":x: "), match[0])
+		parser.redColor.Printf("%s%s\n", emoji.Sprint(":x: "), match[0])
 		return true
 	}
 	if match := parser.dependenciesErrorMatcher.FindStringSubmatch(line); len(match) > 0 {
-		parser.redColor.Printf("3%s%s\n", emoji.Sprint(":x: "), match[0])
+		parser.redColor.Printf("%s%s\n", emoji.Sprint(":x: "), match[0])
 		return true
 	}
 	if match := parser.provisioningProfileMatcher.FindStringSubmatch(line); len(match) > 0 {
-		parser.redColor.Printf("4%s%s\n", emoji.Sprint(":x: "), match[0])
+		parser.redColor.Printf("%s%s\n", emoji.Sprint(":x: "), match[0])
 		return true
 	}
 	if match := parser.noCertificateMatcher.FindStringSubmatch(line); len(match) > 0 {
-		parser.redColor.Printf("5%s%s\n", emoji.Sprint(":x: "), match[0])
+		parser.redColor.Printf("%s%s\n", emoji.Sprint(":x: "), match[0])
 		return true
 	}
 	if match := parser.fatalErrorMatcher.FindStringSubmatch(line); len(match) > 0 {
-		parser.redColor.Printf("7%s%s\n", emoji.Sprint(":x: "), match[0])
+		parser.redColor.Printf("%s%s\n", emoji.Sprint(":x: "), match[0])
 		return true
 	}
 	if match := parser.fileMissingMatcher.FindStringSubmatch(line); len(match) > 0 {
-		parser.redColor.Printf("8%s%s\n", emoji.Sprint(":x: "), match[0])
+		parser.redColor.Printf("%s%s\n", emoji.Sprint(":x: "), match[0])
 		return true
 	}
 	if match := parser.linkerDuplicateSymbolsMatcher.FindStringSubmatch(line); len(match) > 0 {
-		parser.redColor.Printf("11%s%s\n", emoji.Sprint(":x: "), match[0])
+		parser.redColor.Printf("%s%s\n", emoji.Sprint(":x: "), match[0])
 		return true
 	}
 	if match := parser.linkerUndefinedSymbolsLocationMatcher.FindStringSubmatch(line); len(match) > 0 {
-		parser.redColor.Printf("12%s%s\n", emoji.Sprint(":x: "), match[0])
+		parser.redColor.Printf("%s%s\n", emoji.Sprint(":x: "), match[0])
 		return true
 	}
 	if match := parser.linkerUndefinedSymbolsMatcher.FindStringSubmatch(line); len(match) > 0 {
-		parser.redColor.Printf("13%s%s\n", emoji.Sprint(":x: "), match[0])
+		parser.redColor.Printf("%s%s\n", emoji.Sprint(":x: "), match[0])
 		return true
 	}
 	if match := parser.podsErrorMatcher.FindStringSubmatch(line); len(match) > 0 {
-		parser.redColor.Printf("14%s%s\n", emoji.Sprint(":x: "), match[0])
+		parser.redColor.Printf("%s%s\n", emoji.Sprint(":x: "), match[0])
 		return true
 	}
 	if match := parser.symboleReferencedMatcher.FindStringSubmatch(line); len(match) > 0 {
-		parser.redColor.Printf("15%s%s\n", emoji.Sprint(":x: "), match[0])
+		parser.redColor.Printf("%s%s\n", emoji.Sprint(":x: "), match[0])
 		return true
 	}
 	if match := parser.modulesIncludesErrorMatcher.FindStringSubmatch(line); len(match) > 0 {
-		parser.redColor.Printf("16%s%s\n", emoji.Sprint(":x: "), match[0])
+		parser.redColor.Printf("%s%s\n", emoji.Sprint(":x: "), match[0])
 		return true
 	}
 
