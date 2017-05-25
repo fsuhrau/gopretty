@@ -5,7 +5,11 @@ Go Pretty a small beautifier for XCode builds similar to xcpretty
 - Go 1.6+
 
 ## Installation
-go get -u github.com/fsuhrau/gopretty
+``` bash
+$ go get -u github.com/fsuhrau/gopretty
+```
 
 ## Usage
-xcodebuild -project 'testproject.xcodeproj' -configuration Release -target "test" | gopretty
+``` bash
+$ xcodebuild -project 'testproject.xcodeproj' -configuration Release -target "test" | gopretty
+```
