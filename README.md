@@ -10,7 +10,7 @@ Go Pretty a small beautifier for XCode builds similar to xcpretty
 $ go get -u github.com/fsuhrau/gopretty
 ```
 
-##ä via brew
+### via brew
 ``` bash
 $ brew install fsuhrau/homebrew-tap/gopretty
 ```
