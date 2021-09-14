@@ -1,8 +1,8 @@
 # gopretty
-Go Pretty a small beautifier for XCode builds similar to xcpretty
+Go Pretty a small beautifier for XCode and Unity builds similar to xcpretty
 
 ## Requirements
-- Go 1.6+
+- Go 1.8+
 
 ## Installation
 ### form source
