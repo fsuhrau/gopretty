@@ -10,7 +10,7 @@ import (
 
 const (
 	WARNING_MATCHER              = `(.*)(\(\d+,\d+\)):\swarning\s([A-Z0-9]+):\s(.*)`
-	FIND_PLAYER_ASSEMBLY_WARNING = `Unable to find player assembly:.*`
+	FIND_PLAYER_ASSEMBLY_WARNING = `Unable\sto\sfind\splayer\sassembly:.*`
 	UNITY_WARNING                = `Warning!\s.*`
 )
 

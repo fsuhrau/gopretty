@@ -9,7 +9,7 @@ import (
 
 const (
 	LICENSE_CLIENT = `[LicensingClient|Licensing::Module|]\s.*`
-	LICENSE_SYSTEM = `LICENSE SYSTEM.*`
+	LICENSE_SYSTEM = `LICENSE\sSYSTEM.*`
 )
 
 type EditorParser struct {

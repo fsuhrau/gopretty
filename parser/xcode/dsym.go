@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	GENERATE_DSYM_MATCHER           = `GenerateDSYMFile \/.*\/(.*\.dSYM)`
+	GENERATE_DSYM_MATCHER           = `GenerateDSYMFile\s\/.*\/(.*\.dSYM)`
 	CREATE_UNIVERSAL_BINARY_MATCHER = `CreateUniversalBinary.*`
 )
 

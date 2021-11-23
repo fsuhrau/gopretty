@@ -13,7 +13,7 @@ import (
 
 const (
 	ERROR_MATCHER = `(.*)(\(\d+,\d+\)):\serror\s([A-Z0-9]+):\s(.*)`
-	ABORT         = `Aborting batchmode due to failure:`
+	ABORT         = `Aborting\sbatchmode\sdue\sto\sfailure:`
 	EXCEPTION     = `(.*)Exception:\s(.*)`
 )
 
@@ -45,6 +45,16 @@ func (parser *ErrorParser) Match(line string, reader *bufio.Reader) bool {
 
 	if match := parser.exceptionMatch.FindStringSubmatch(line); len(match) > 0 {
 		parser.color.Printf("%s%s \n", emoji.Sprint(":x: "), match[0])
+		for i := 0; i < 1; i++ {
+			text, err := reader.ReadString('\n')
+			if err != nil {
+				if err != io.EOF {
+					os.Exit(1)
+				}
+				return true
+			}
+			parser.color.Println(strings.TrimRight(text, "\n"))
+		}
 		return true
 	}
 

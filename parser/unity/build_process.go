@@ -11,7 +11,7 @@ const (
 	PLATFROM_BUILD_MESSAGE = `={2,3}\s.*`
 	PROGRESS_BAR           = `DisplayProgressbar:\s.*`
 	SCRIPT_COMPILATION     = `\[ScriptCompilation\]\s.*`
-	EXITING_BATCHMODE      = `Exiting batchmode.*`
+	EXITING_BATCHMODE      = `Exiting\sbatchmode.*`
 )
 
 type BuildProcessParser struct {
