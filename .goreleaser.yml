@@ -6,25 +6,14 @@ builds:
       - darwin
     goarch:
       - amd64
-brew:
+brews:
   # Reporitory to push the tap to.
-  github:
-    owner: fsuhrau
-    name: homebrew-tap
-
-  # Folder inside the repository to put the formula.
-  # Default is the root folder.
-  folder: Formula
-
-  # Caveats for the user of your binary.
-  # Default is empty.
-  caveats: "xcodebuild -project 'testproject.xcodeproj' -configuration Release -target \"test\" | gopretty"
-
-  # Your app's homepage
-  # Default is empty
-  homepage: "https://github.com/fsuhrau/gopretty"
-
-  # Your app's description
-  # Default is empty
-  description: "Go Pretty a small beautifier for XCode builds similar to xcpretty"
+  - tap:
+      owner: fsuhrau
+      name: homebrew-tap
+      branch: main
+    folder: Formula
+    caveats: "xcodebuild -project 'testproject.xcodeproj' -configuration Release -target \"test\" | gopretty"
+    homepage: "https://github.com/fsuhrau/gopretty"
+    description: "Go Pretty a small beautifier for XCode builds similar to xcpretty"
  
