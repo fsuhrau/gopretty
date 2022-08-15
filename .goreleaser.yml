@@ -6,6 +6,7 @@ builds:
       - darwin
     goarch:
       - amd64
+      - arm64
 brews:
   # Reporitory to push the tap to.
   - tap:
