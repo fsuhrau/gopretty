@@ -31,7 +31,7 @@ func NewStatusParser() *StatusParser {
 	}
 }
 
-func (parser *StatusParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *StatusParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 	if match := parser.statusMatch.FindStringSubmatch(line); len(match) > 0 {
 		if match[1] == "SUCCEEDED" {
 			parser.greenColor.Printf("%s\n", match[0])

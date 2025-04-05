@@ -26,7 +26,7 @@ func NewScriptCompiledParser() *ScriptCompiledParser {
 	}
 }
 
-func (parser *ScriptCompiledParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *ScriptCompiledParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 
 	if match := parser.matcher.FindStringSubmatch(line); len(match) > 0 {
 		parser.color.Printf("Script Compiled: %s %s seconds\n", match[1], match[2])

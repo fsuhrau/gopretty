@@ -44,7 +44,7 @@ func NewWarningParser() *WarningParser {
 	}
 }
 
-func (parser *WarningParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *WarningParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 
 	if match := parser.compileWarningMatcher.FindStringSubmatch(line); len(match) > 0 {
 		parser.yellowColor.Printf("%s%s\n", emoji.Sprint(":warning: "), match[0])

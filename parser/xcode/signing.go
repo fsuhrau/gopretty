@@ -54,7 +54,7 @@ func NewSigningParser() *SigningParser {
 	}
 }
 
-func (parser *SigningParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *SigningParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 	if match := parser.codeSignMatch.FindStringSubmatch(line); len(match) > 0 {
 		fmt.Printf("%s '%s'\n", parser.whiteColor.Sprint("CodeSign:"), match[1])
 		return true

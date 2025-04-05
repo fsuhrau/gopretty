@@ -33,7 +33,7 @@ func NewDotEnvParser() *DotEnvParser {
 	}
 }
 
-func (parser *DotEnvParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *DotEnvParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 
 	if match := parser.dotEnvMatch.FindStringSubmatch(line); len(match) > 0 {
 		parser.color.Printf("%s\n", match[0])

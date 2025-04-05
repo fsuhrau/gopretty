@@ -36,7 +36,7 @@ func NewErrorParser() *ErrorParser {
 	}
 }
 
-func (parser *ErrorParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *ErrorParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 
 	if match := parser.matcher.FindStringSubmatch(line); len(match) > 0 {
 		parser.color.Printf("%s%s\n", emoji.Sprint(":x: "), match[0])

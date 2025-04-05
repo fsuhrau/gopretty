@@ -16,7 +16,7 @@ const (
 
 type WarningParser struct {
 	color                  *color.Color
-	matcher                *regexp.Regexp
+	warningMatch           *regexp.Regexp
 	findPlayerWarningMatch *regexp.Regexp
 	unityWarningMatch      *regexp.Regexp
 }
@@ -27,15 +27,15 @@ func NewWarningParser() *WarningParser {
 
 	return &WarningParser{
 		color:                  yellow,
-		matcher:                regexp.MustCompile(WARNING_MATCHER),
+		warningMatch:           regexp.MustCompile(WARNING_MATCHER),
 		findPlayerWarningMatch: regexp.MustCompile(FIND_PLAYER_ASSEMBLY_WARNING),
 		unityWarningMatch:      regexp.MustCompile(UNITY_WARNING),
 	}
 }
 
-func (parser *WarningParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *WarningParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 
-	if match := parser.matcher.FindStringSubmatch(line); len(match) > 0 {
+	if match := parser.warningMatch.FindStringSubmatch(line); len(match) > 0 {
 		parser.color.Printf("%s%s\n", emoji.Sprint(":warning: "), match[0])
 		return true
 	}

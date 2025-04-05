@@ -20,7 +20,7 @@ func NewShellParser() *ShellParser {
 	}
 }
 
-func (parser *ShellParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *ShellParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 	if match := parser.shellMatch.FindStringSubmatch(line); len(match) > 0 {
 		fmt.Println(match[0])
 		return true

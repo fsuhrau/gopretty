@@ -40,7 +40,7 @@ func NewCompileParser() *CompileParser {
 	}
 }
 
-func (parser *CompileParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *CompileParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 
 	if match := parser.compileMatch.FindStringSubmatch(line); len(match) > 0 {
 		fmt.Println(color.WhiteString(fmt.Sprintf("%s %s %s", parser.whiteColor.Sprint("Compiling:"), match[2], match[1])))

@@ -56,7 +56,7 @@ func NewPhasesParser() *PhasesParser {
 	}
 }
 
-func (parser *PhasesParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *PhasesParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 
 	if match := parser.phaseScriptMatch.FindStringSubmatch(line); len(match) > 0 {
 		fmt.Printf("%s %s\n", parser.whiteColor.Sprint("PhaseScriptExecution:"), match[1])

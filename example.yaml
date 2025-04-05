@@ -1,0 +1,81 @@
+# this config contains most of the internal expressions for the unity build beautifier as example
+beautifier:
+  - name: DotEnvFile Contains # a name for the validator
+    regex: 'DotEnv\sfile\scontains:' # regex to trigger the beautifier config
+    color: white # color for the beautifier check const/colors.go for available options
+    print: 'DotEnv file contains:' # optional print statement can contain capture groups from regex within {}
+    # multiline indicates that more lines should be read from the input stream
+    # there are 3 options to define how many lines needs to be read
+    multiline_lines: 0 # optional define the number of lines to read
+    multiline_regex: '\s*(?P<var>[A-Z_]+):\s(?P<value>.*)' # optional define a regex that must match for the lines none matching will end this config
+    #multiline_endline: '' # optional define line that should end the parser can be empty or and end statement
+    #multiline_print: '{var}: {value}' # optional define the pretty print for the regex parsed multiline
+  - name: Build Warning
+    regex: (?P<file>.*)(?P<line>\(\d+,\d+\)):\swarning\s(?P<code>[A-Z0-9]+):\s(?P<message>.*)
+    color: yellow
+    print: '⚠ warning: {file}:{line} {message}'
+  - name: Unity Unable to find Player Assembly
+    regex: Unable\sto\sfind\splayer\sassembly:(?P<assembly>.*)
+    color: yellow
+    print: 'Unable to find Player Assembly: {assembly}'
+  - name: Platform Build Message
+    regex: ===\s(?P<message>.*)
+    color: white
+    print: '> Build: {message}'
+  - name: Unity Progress Bar
+    regex: DisplayProgressbar:\s(?P<step>.*)
+    color: white
+    print: 'Progress: {step}'
+  - name: Compile Script
+    regex: \[ScriptCompilation\]\s(?P<script>.*)
+    color: white
+    print: 'Compile: {script}'
+  - name: Exiting Batchmode
+    regex: Exiting\sbatchmode(?P<message>.*)
+    color: white
+    print: 'Exiting Batchmode: {message}'
+  - name: Import Assets
+    regex: Done\simporting\sasset:\s'(?P<assetname>.*)'\s\(target\shash:\s'(?P<hash>[a-zA-Z0-9]+)'\)\sin\s(?P<duration>.*)\sseconds
+    color: green
+    print: 'Imported asset {assetname} ({hash}) {duration}secs'
+  - name: DotEnvFile
+    regex: (?P<line>DotEnvFile\s.*)
+    color: white
+    print: '{line}'
+  - name: DotEnvFile Override
+    regex: (?P<line>DotEnv\soverride.*)
+    color: white
+    print: '{line}'
+  - name: Build Errors
+    regex: (?P<file>.*)(?P<line>\(\d+,\d+\)):\serror\s(?P<code>[A-Z0-9]+):\s(?P<message>.*)
+    color: red
+    print: '❌ error: {file}:{line} {message}'
+  - name: Build Exception
+    regex: '^Exception:\s(?P<exception>.*)'
+    color: red
+    print: '❌ Exception: {exception}'
+    multiline_endline: ''
+    #multiline_print: '{var}: {value}' # define the pretty print
+  - name: Unity Exception
+    regex: 'UnityException:\s(?P<exception>.*)'
+    color: red
+    print: '❌ UnityException: {exception}'
+    # multiline_endline: ''
+    #multiline_print: '{var}: {value}' # define the pretty print
+  - name: Unity Abort
+    regex: '(?P<message>Aborting\sbatchmode\sdue\sto\sfailure:)'
+    color: red
+    print: '❌ {message}'
+    multiline_endline: ''
+    #multiline_print: '{var}: {value}' # define the pretty print
+  - name: Gradle Failure
+    regex: 'FAILURE:\s(?P<message>.*)\n'
+    color: red
+    print: '❌ Gradle Failed {message}'
+  - name: Gradle What Went Wrong
+    regex: '\*\sWhat\swent\swrong:\n'
+    color: red
+    multiline_endline: ''
+  - name: Gradle Unexpected Exit
+    regex: '.*unexpectedly exit.*\n'
+    color: red

@@ -67,7 +67,7 @@ func NewErrorParser() *ErrorParser {
 	}
 }
 
-func (parser *ErrorParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *ErrorParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 
 	if match := parser.compileErrorMatcher.FindStringSubmatch(line); len(match) > 0 {
 

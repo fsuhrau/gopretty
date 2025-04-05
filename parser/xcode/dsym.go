@@ -31,7 +31,7 @@ func NewPackagingParser() *PackagingParser {
 	}
 }
 
-func (parser *PackagingParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *PackagingParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 
 	if match := parser.dsymMatch.FindStringSubmatch(line); len(match) > 0 {
 		fmt.Printf("%s %s\n", parser.whiteColor.Sprint("GenerateDSYM File:"), match[1])

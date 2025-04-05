@@ -27,7 +27,7 @@ func NewEditorParser() *EditorParser {
 	}
 }
 
-func (parser *EditorParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *EditorParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 
 	if match := parser.licenseClientMatch.FindStringSubmatch(line); len(match) > 0 {
 		parser.color.Printf("%s\n", match[0])

@@ -24,7 +24,7 @@ func NewImportAssetParser() *ImportAssetParser {
 	}
 }
 
-func (parser *ImportAssetParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *ImportAssetParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 
 	if match := parser.matcher.FindStringSubmatch(line); len(match) > 0 {
 		parser.color.Printf("Import asset: %s (%s) %s seconds\n", match[1], match[2], match[3])

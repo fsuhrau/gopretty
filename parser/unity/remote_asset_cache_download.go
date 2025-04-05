@@ -24,7 +24,7 @@ func NewRemoteAssetCacheParser() *RemoteAssetCacheParser {
 	}
 }
 
-func (parser *RemoteAssetCacheParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *RemoteAssetCacheParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 
 	if match := parser.matcher.FindStringSubmatch(line); len(match) > 0 {
 		parser.color.Printf("%s %s %s success: %s\n", match[2], match[3], match[4], match[1])

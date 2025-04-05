@@ -37,7 +37,7 @@ func NewCopyParser() *CopyParser {
 	}
 }
 
-func (parser *CopyParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *CopyParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 
 	if match := parser.copyHeaderMatcher.FindStringSubmatch(line); len(match) > 0 {
 		fmt.Println(match[0])

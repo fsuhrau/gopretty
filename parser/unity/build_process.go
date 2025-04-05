@@ -33,7 +33,7 @@ func NewBuildProcessParser() *BuildProcessParser {
 	}
 }
 
-func (parser *BuildProcessParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *BuildProcessParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 
 	if match := parser.buildMatch.FindStringSubmatch(line); len(match) > 0 {
 		parser.color.Printf("Build: %s \n", match[0])

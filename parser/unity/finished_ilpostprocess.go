@@ -24,7 +24,7 @@ func NewFinishedILPostProcessor() *FinishedILPostProcessor {
 	}
 }
 
-func (parser *FinishedILPostProcessor) Match(line string, reader *bufio.Reader) bool {
+func (parser *FinishedILPostProcessor) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 
 	if match := parser.matcher.FindStringSubmatch(line); len(match) > 0 {
 		parser.color.Printf("ILPostProcessor: %s on %s %s seconds\n", match[1], match[2], match[3])

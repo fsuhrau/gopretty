@@ -18,7 +18,7 @@ const (
 	TESTS_RUN_COMPLETION_MATCHER = `\s*Test Suite '(?:.*\/)?(.*[ox]ctest.*)' (finished|passed|failed) at (.*)`
 	TEST_SUITE_STARTED_MATCHER   = `\s*Test Suite '(?:.*\/)?(.*[ox]ctest.*)' started at(.*)`
 	TEST_SUITE_START_MATCHER     = `\s*Test Suite '(.*)' started at`
-	EXECUTED_MATCHER             = `\s*Executed`
+	EXECUTED_MATCHER             = `\s*Executed$`
 )
 
 type TestParser struct {
@@ -55,7 +55,7 @@ func NewTestParser() *TestParser {
 	}
 }
 
-func (parser *TestParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *TestParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 
 	if match := parser.failingTestMatch.FindStringSubmatch(line); len(match) > 0 {
 		fmt.Printf("%s\n", match[0])

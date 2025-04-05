@@ -17,5 +17,10 @@ $ brew install fsuhrau/homebrew-tap/gopretty
 
 ## Usage
 ``` bash
+# validate a custom config
+$ gopretty validate --config example.yaml
+# beatufiy with default rules
 $ xcodebuild -project 'testproject.xcodeproj' -configuration Release -target "test" | gopretty
+# beautify with custom rules
+$ xcodebuild -project 'testproject.xcodeproj' -configuration Release -target "test" | gopretty beautify --config example.yaml
 ```

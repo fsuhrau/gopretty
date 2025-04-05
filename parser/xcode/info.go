@@ -57,7 +57,7 @@ func NewInfoParser() *InfoParser {
 	}
 }
 
-func (parser *InfoParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *InfoParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 
 	if match := parser.dependencyMatch.FindStringSubmatch(line); len(match) > 0 {
 		parser.whiteColor.Println(match[0])

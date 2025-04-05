@@ -31,7 +31,7 @@ func NewLinkerParser() *LinkerParser {
 	}
 }
 
-func (parser *LinkerParser) Match(line string, reader *bufio.Reader) bool {
+func (parser *LinkerParser) Match(line string, reader *bufio.Reader, overflowFunction func(overflowLine string)) bool {
 	if match := parser.libToolMatcher.FindStringSubmatch(line); len(match) > 0 {
 		fmt.Printf("%s\n", match[0])
 		return true
