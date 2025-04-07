@@ -11,6 +11,7 @@ builds:
       - arm64
 brews:
   - name: gopretty
+    directory: Formula
     repository:
       owner: fsuhrau
       name: homebrew-tap
