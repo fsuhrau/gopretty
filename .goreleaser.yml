@@ -1,19 +1,20 @@
+version: 2
 # .goreleaser.yml
 # Build customization
 builds:
-  - binary: gopretty
+  - id: "gopretty"
+    binary: gopretty
     goos:
       - darwin
     goarch:
       - amd64
       - arm64
 brews:
-  # Reporitory to push the tap to.
-  - tap:
+  - name: gopretty
+    repository:
       owner: fsuhrau
       name: homebrew-tap
       branch: master
-    folder: Formula
     caveats: "xcodebuild -project 'testproject.xcodeproj' -configuration Release -target \"test\" | gopretty"
     homepage: "https://github.com/fsuhrau/gopretty"
     description: "Go Pretty a small beautifier for XCode builds similar to xcpretty"
